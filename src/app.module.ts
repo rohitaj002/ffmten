@@ -1,28 +1,24 @@
-// src/app.module.ts
-import { MiddlewareConsumer, Module } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { RouterModule } from '@nestjs/core';
-import { APIModule } from './../src/route/api/api.module';
-import { APIRoutes } from 'src/route/api/api.route';
 import { AllEntities } from 'src/constant/database/model';
 import { getDataSourceOptions } from './data-source';
-import { ConfigModule } from './config/config.module';
-import { ConfigService } from '@nestjs/config';
-import { MulterModule } from '@nestjs/platform-express';
+// import { ConfigModule } from './config/config.module';
+// import { ConfigService } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 
-import { V1Module } from 'src/route/api/v1/v1.module';
+import { APIModule } from 'src/route/api/api.module';
+import { APIRoutes } from 'src/route/api/api.route';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature(AllEntities),
+    ConfigModule.forRoot(),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
-      useFactory: (
-        configService: ConfigService,
-      ) => getDataSourceOptions(configService),
+      useFactory: (configService: ConfigService) => getDataSourceOptions(configService),
       inject: [ConfigService],
     }),
-    RouterModule.forRoot([
+    RouterModule.register([
       {
         path: 'api',
         module: APIModule,

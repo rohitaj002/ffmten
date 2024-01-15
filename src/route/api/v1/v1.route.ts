@@ -1,10 +1,10 @@
-import { UserController } from "./user/user.controller";
+// src\route\api\v1\v1.route.ts
 
+import { UserModule } from "./user/user.module";
 
 export const V1Routes = [
     {
         path: 'user',
-        module: UserController
-        // children: 
-    }
-]
+        controller: UserModule, 
+    },
+];
