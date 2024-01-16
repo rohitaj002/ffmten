@@ -13,6 +13,7 @@ import { APIRoutes } from 'src/route/api/api.route';
 @Module({
   imports: [
     ConfigModule.forRoot(),
+    TypeOrmModule.forFeature(AllEntities),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => getDataSourceOptions(configService),

@@ -8,7 +8,6 @@ export const getDataSourceOptions = (
 ): MysqlConnectionOptions => {
   // Use optional chaining to safely access the configuration value
   const port = configService.get<number>('DB_PORT');
-  console.log(configService.get<string>('DB_NAME'))
 
   return {
     type: 'mysql',

@@ -1,9 +1,13 @@
+// src/route/api/v1/v1.module.ts
 import { Module } from '@nestjs/common';
+import { UserService } from './user/user.service';
 import { UserController } from './user/user.controller';
-import { UserModule } from './user/user.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { AllEntities } from 'src/constant/database/model';
 
 @Module({
+  imports: [TypeOrmModule.forFeature(AllEntities)],
   controllers: [UserController],
-  imports: [UserModule]
+  providers: [UserService],
 })
 export class V1Module {}
