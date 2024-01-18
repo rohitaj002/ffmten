@@ -1,4 +1,3 @@
-// src/constant/database/model/user.entity.ts
 import { Entity, Column, PrimaryGeneratedColumn, DeleteDateColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
 
@@ -6,36 +5,34 @@ import { ApiProperty } from '@nestjs/swagger';
 export class User {
   @ApiProperty()
   @PrimaryGeneratedColumn()
-  id: number;
+  id: number = 0;
 
   @ApiProperty()
   @Column()
-  name: string;
+  name: string = '';
 
   @ApiProperty()
   @Column()
-  phoneNo: string;
+  phoneNo: string = '';
 
   @ApiProperty()
   @Column()
-  password: string;
+  password: string = '';
 
   @ApiProperty()
   @Column()
-  otp: string;
+  otp: string = '';
 
   @ApiProperty()
   @Column()
-  upiId: string;
+  upiId: string = '';
 
   @DeleteDateColumn({ name: 'deleted_at', type: 'timestamp', nullable: true })
-  deletedAt: Date;
+  deletedAt: Date = new Date();
 
   @CreateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP(6)' })
-  createdAt: Date;  
+  createdAt: Date = new Date();
 
   @UpdateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP(6)', onUpdate: 'CURRENT_TIMESTAMP(6)' })
-  updatedAt: Date;
-  
-
+  updatedAt: Date = new Date();
 }

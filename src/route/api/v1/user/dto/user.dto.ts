@@ -6,27 +6,27 @@ export class CreateUserDto {
   @ApiProperty()
   @IsNotEmpty()
   @IsString()
-  readonly name: string;
+  readonly name: string = '';
 
   @ApiProperty()
   @IsNotEmpty()
   @IsString()
-  readonly phoneNo: string;
+  readonly phoneNo: string = '';
 
   @ApiProperty()
   @IsNotEmpty()
   @IsString()
-  readonly password: string;
+  readonly password: string = '';
 
   @ApiProperty()
   @IsNotEmpty()
   @IsString()
-  readonly otp: string;
+  readonly otp: string = '';
 
   @ApiProperty()
   @IsNotEmpty()
   @IsString()
-  readonly upiId: string;
+  readonly upiId: string = '';
 }
 
 export class UpdateUserDto {
